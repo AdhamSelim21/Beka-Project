@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Hero from 'images/Hero.png'
 import { FaInstagram, FaFacebookF, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
-import Navbar from './Components/Navbar'
+import Navbar from './Navbar'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -18,12 +18,13 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <main>{children}</main>
         <Navbar />
 
         <header className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] overflow-hidden mt-20 md:mt-20 lg:mt-20   ">
           <Image src={Hero} alt="Beka Sports Hero" fill />
         </header>
+
+        <main>{children}</main>
 
         <footer className="bg-blue-950 text-white py-12 md:py-16 px-6 md:px-8 border-t border-white/10 rounded-t-[2rem]">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
