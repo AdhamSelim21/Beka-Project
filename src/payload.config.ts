@@ -3,11 +3,11 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
-
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import { posts } from './collections/Posts'
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { Products } from './collections/Products'
+// import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -19,7 +19,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, posts],
+  collections: [Users, Media, Products],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -28,8 +28,21 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URL,
-    }
+    },
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    // uploadthingStorage({
+    //   collections: {
+    //     media: true,
+    //   },
+    //   options: {
+    //     token: process.env.UPLOADTHING_TOKEN,
+    //     acl: 'public-read',
+    //   },
+    // }),
+  ],
+  cors: {
+    origins: ['http://localhost:3000', '*'],
+  }
 })
