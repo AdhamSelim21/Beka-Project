@@ -7,6 +7,8 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { Products } from './collections/Products'
+import { Portfolios } from './collections/Portfolios'
+import { Acrylics } from './collections/Acrylics'
 // import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 
 const filename = fileURLToPath(import.meta.url)
@@ -19,7 +21,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Products],
+  collections: [Users, Media, Products, Portfolios, Acrylics],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

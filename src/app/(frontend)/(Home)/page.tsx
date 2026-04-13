@@ -27,7 +27,7 @@ export default async function HomePage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Link
-            href="#"
+            href="/acrylic"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
