@@ -41,7 +41,7 @@ export default async function ProuductsPage() {
         ) : (
           /* --- Empty State Placeholder --- */
           <div className="text-center py-20 border-2 border-dashed border-gray-300 rounded-xl">
-            <h3 className="text-2xl font-bold text-blue-950">No products found</h3>
+            <h3 className="text-2xl font-bold text-blue-950">No products yet</h3>
             <p className="text-gray-500 mt-2">Check back later for new arrivals.</p>
           </div>
         )}

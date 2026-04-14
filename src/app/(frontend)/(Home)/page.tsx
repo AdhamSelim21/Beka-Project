@@ -43,7 +43,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/trtan"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
@@ -59,7 +59,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/artificial-grass"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
@@ -77,7 +77,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/padel"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
@@ -93,7 +93,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/padpol"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
@@ -109,7 +109,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/land-scape"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
@@ -125,7 +125,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/kids-area"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
@@ -141,7 +141,7 @@ export default async function HomePage() {
           </Link>
 
           <Link
-            href="#"
+            href="/gym"
             className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
           >
             <div className="aspect-[16/10] w-full overflow-hidden">
