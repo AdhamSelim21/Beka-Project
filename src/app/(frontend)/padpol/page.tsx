@@ -9,79 +9,66 @@ import padel4 from 'images/padel4.png'
 import padel5 from 'images/padel5.png'
 import padel6 from 'images/padel6.png'
 
-export default async function PadelPage() {
+export default async function PadpolPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const padpols = await payload.find({
     collection: 'padpols',
   })
 
+  const padpolBase = [
+    {
+      title: 'The stadium iron',
+      image: padel1,
+    },
+    {
+      title: 'The stadium concrete',
+      image: padel2,
+    },
+    {
+      title: 'The stadium glass',
+      image: padel3,
+    },
+    {
+      title: 'The stadium grass',
+      image: padel4,
+    },
+  ]
+
+  const padpolModel = [
+    {
+      title: 'The stadium iron',
+      image: padel5,
+    },
+    {
+      title: 'The stadium concrete',
+      image: padel6,
+    },
+  ]
+
   return (
     <div>
       <section className="max-w-7xl mx-auto px-8 py-24 text-center">
         <h2 className="text-4xl md:text-5xl font-headline font-extrabold tracking-tight text-blue-950 mb-16 border-b-orange-500 border-b-6 inline-block pb-2 uppercase">
-          PADEL BASE
+          PADPOL BASE
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4 ">
-            <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel1}
-                alt="vibrant color close-up of a high-end carbon fiber padel racket with orange accents"
-              />
+          {padpolBase.map((item) => (
+            <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4 " key={item.title}>
+              <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
+                <Image
+                  className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                  src={item.image}
+                  alt={item.title}
+                />
+              </div>
+              <div className="bg-surface-container py-3 rounded-b-2xl">
+                <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white ">
+                  {item.title}
+                </p>
+              </div>
             </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white ">
-                The stadium iron
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4">
-            <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel2}
-                alt="bright neon yellow padel balls on a vibrant blue court surface"
-              />
-            </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium concrete
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4">
-            <div className="aspect-[3/4] bg-surface-container-highest overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel3}
-                alt="dynamic full color photo of a padel player hitting a smash on court"
-              />
-            </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium glass
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4">
-            <div className="aspect-[3/4] bg-surface-container-highest overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel4}
-                alt="full color close-up of professional padel shoes with textured soles and bright details"
-              />
-            </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium grass
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -89,24 +76,15 @@ export default async function PadelPage() {
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-headline font-extrabold tracking-tight text-white uppercase border-b-orange-500  border-b-6 inline-block pb-2">
-              PADEL MODEL
+              PADPOL MODEL
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 px-20"> 
-            <div className="aspect-[3/4] bg-surface-variant rounded-[2.5rem] overflow-hidden cursor-pointer">
-              <Image
-                className="w-full h-full object-cover"
-                src={padel5}
-                alt="vibrant full color shot of a modern indoor padel arena with multiple blue courts"
-              />
-            </div>
-            <div className="aspect-[3/4] bg-surface-variant rounded-[2.5rem] overflow-hidden cursor-pointer">
-              <Image
-                className="w-full h-full object-cover"
-                src={padel6}
-                alt="colorful sports jerseys in navy and orange hanging in a professional locker room"
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 px-20">
+            {padpolModel.map((item) => (
+              <div className="aspect-[3/4] bg-surface-variant rounded-[2.5rem] overflow-hidden cursor-pointer" key={item.title}>
+                <Image className="w-full h-full object-cover" src={item.image} alt={item.title} />
+              </div>
+            ))}
           </div>
         </div>
       </section>

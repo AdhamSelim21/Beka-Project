@@ -7,13 +7,38 @@ import tartan2 from 'images/tartan2.png'
 import tartan5 from 'images/tartan5.png'
 import tartan3 from 'images/tartan3.png'
 import tartan1 from 'images/tartan1.png'
+import { title } from 'process'
 
-export default async function ProuductsPage() {
+export default async function ArtificialGrassPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const artificialGrass = await payload.find({
     collection: 'artificial-grass',
   })
+  const system = [
+    {
+      title: 'Tartan SW Layer',
+      image: tartan1,
+    },
+    {
+      title: 'Tartan M Layer',
+      image: tartan2,
+    },
+    {
+      title: 'Tartan MW Layer',
+      image: tartan3,
+    },
+  ]
+  const lastSystem = [
+    {
+      title: 'Tartan Sandwitch Layer',
+      image: tartan4,
+    },
+    {
+      title: 'Tartan MM Layer',
+      image: tartan5,
+    },
+  ]
 
   return (
     <div>
@@ -26,68 +51,36 @@ export default async function ProuductsPage() {
             <div className="w-12 h-1 bg-primary mx-auto"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
-            <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-square w-full bg-surface-container overflow-hidden ">
-                <Image
-                  className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
-                  src={tartan1}
-                  alt="Tartan SW system"
-                />
+            {system.map((item) => (
+              <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={item.title}>
+                <div className="aspect-square w-full bg-surface-container overflow-hidden ">
+                  <Image
+                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
+                    src={item.image}
+                    alt={item.title}
+                  />
+                </div>
+                <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
+                  {item.title}
+                </p>
               </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                Tartan SW Layer
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-square w-full bg-surface-container overflow-hidden">
-                <Image
-                  className="w-full h-full object-cover rounded-lg group-hover:scale-105"
-                  src={tartan2}
-                  alt="Tartan M system"
-                />
-              </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                Tartan M Layer
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-square w-full bg-surface-container overflow-hidden">
-                <Image
-                  className="w-full h-full object-cover rounded-lg group-hover:scale-105"
-                  src={tartan3}
-                  alt="Tartan MW system"
-                />
-              </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                Tartan MW Layer
-              </p>
-            </div>
+            ))}
 
             <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
-              <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-                <div className="aspect-square w-full bg-surface-container overflow-hidden">
-                  <Image
-                    className="w-full h-full object-cover rounded-lg group-hover:scale-105"
-                    src={tartan4}
-                    alt="Tartan Sandwitch system"
-                  />
+              {lastSystem.map((item) => (
+                <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={item.title}>
+                  <div className="aspect-square w-full bg-surface-container overflow-hidden">
+                    <Image
+                      className="w-full h-full object-cover rounded-lg group-hover:scale-105"
+                      src={item.image}
+                      alt={item.title}
+                    />
+                  </div>
+                  <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
+                    {item.title}
+                  </p>
                 </div>
-                <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                  Tartan Sandwitch Layer
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-                <div className="aspect-square w-full bg-surface-container overflow-hidden">
-                  <Image
-                    className="w-full h-full object-cover rounded-lg group-hover:scale-105"
-                    src={tartan5}
-                    alt="Tartan MM system"
-                  />
-                </div>
-                <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                  Tartan MM Layer
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </section>

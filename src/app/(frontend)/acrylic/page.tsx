@@ -15,6 +15,31 @@ export default async function AcrylicPage() {
     collection: 'acrylics',
   })
 
+  const acrylicBase = [
+    {
+      title: 'The stadium asphalt',
+      image: asphalt,
+    },
+    {
+      title: 'The stadium concrete',
+      image: concrete,
+    },
+  ]
+  const system = [
+    {
+      title: 'Hard Acrylic Layer',
+      image: acrylic1,
+    },
+    {
+      title: 'Cushion Acrylic Layer',
+      image: acrylic2,
+    },
+    {
+      title: 'Soft Acrylic Layer',
+      image: acrylic3,
+    },
+  ]
+
   return (
     <div>
       <main className="max-w-7xl mx-auto px-6 py-20 space-y-32">
@@ -26,34 +51,24 @@ export default async function AcrylicPage() {
             <div className="w-12 h-1 bg-primary mx-auto"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-[16/9] bg-surface-variant overflow-hidden">
-                <Image
-                  className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                  src={asphalt}
-                  alt="close up detail of blue acrylic tennis court texture with crisp white boundary lines"
-                />
+            {acrylicBase.map((base) => (
+              <div className="space-y-4 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={base.title}>
+                <div className="aspect-[16/9] bg-surface-variant overflow-hidden">
+                  <Image
+                    className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                    src={base.image}
+                    alt={base.title}
+                  />
+                </div>
+                <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
+                  {base.title}
+                </p>
               </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium asphalt
-              </p>
-            </div>
-            <div className="space-y-4  bg-blue-950 rounded-xl p-6 group cursor-pointer  ">
-              <div className="aspect-[16/9] bg-surface-variant overflow-hidden">
-                <Image
-                  className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105 "
-                  src={concrete}
-                  alt="wide angle shot of multi-sport indoor stadium with vibrant orange acrylic flooring"
-                />
-              </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium concrete
-              </p>
-            </div>
+            ))}
           </div>
         </section>
 
-        <section >
+        <section>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-blue-950 border-b-orange-500  border-b-6 inline-block pb-2">
               SYSTEM
@@ -61,42 +76,20 @@ export default async function AcrylicPage() {
             <div className="w-12 h-1 bg-primary mx-auto"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-square w-full bg-surface-container overflow-hidden ">
-                <Image
-                  className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
-                  src={acrylic1}
-                  alt="Hard Acrylic Layer"
-                />
+            {system.map((layer) => (
+              <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={layer.title}>
+                <div className="aspect-square w-full bg-surface-container overflow-hidden ">
+                  <Image
+                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
+                    src={layer.image}
+                    alt={layer.title}
+                  />
+                </div>
+                <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
+                  {layer.title}
+                </p>
               </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                Hard Acrylic Layer
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-square w-full bg-surface-container overflow-hidden">
-                <Image
-                  className="w-full h-full object-cover rounded-lg group-hover:scale-105"
-                  src={acrylic2}
-                  alt="Cushion Acrylic Layer"
-                />
-              </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                Cushion Acrylic Layer
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer">
-              <div className="aspect-square w-full bg-surface-container overflow-hidden">
-                <Image
-                  className="w-full h-full object-cover rounded-lg group-hover:scale-105"
-                  src={acrylic3}
-                  alt="System Soft Acrylic layer"
-                />
-              </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-secondary text-white">
-                Soft Acrylic Layer
-              </p>
-            </div>
+            ))}
           </div>
         </section>
 

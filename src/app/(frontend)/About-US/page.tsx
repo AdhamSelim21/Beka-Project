@@ -3,6 +3,7 @@ import config from '@/payload.config'
 import Image from 'next/image'
 import AboutUS from 'images/AboutUS.png'
 
+
 export default async function AboutUSPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })

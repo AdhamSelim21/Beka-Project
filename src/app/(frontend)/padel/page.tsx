@@ -17,6 +17,39 @@ export default async function PadelPage() {
     collection: 'padels',
   })
 
+  const padelBase = [
+    {
+      title: 'The stadium iron',
+      image: padel1,
+    },
+    {
+      title: 'The stadium concrete',
+      image: padel2,
+    },
+    {
+      title: 'The stadium glass',
+      image: padel3,
+    },
+    {
+      title: 'The stadium grass',
+      image: padel4,
+    },
+  ]
+  const padelModel = [
+    {
+      title: 'Standard',
+      image: padel5,
+    },
+    {
+      title: 'Panorama',
+      image: padel6,
+    },
+    {
+      title: 'super panorama',
+      image: padel7,
+    },
+  ]
+
   return (
     <div>
       <section className="max-w-7xl mx-auto px-8 py-24 text-center">
@@ -24,65 +57,22 @@ export default async function PadelPage() {
           PADEL BASE
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4 ">
-            <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel1}
-                alt="vibrant color close-up of a high-end carbon fiber padel racket with orange accents"
-              />
+          {padelBase.map((item) => (
+            <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4 " key={item.title}>
+              <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
+                <Image
+                  className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                  src={item.image}
+                  alt={item.title}
+                />
+              </div>
+              <div className="bg-surface-container py-3 rounded-b-2xl">
+                <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white ">
+                  {item.title}
+                </p>
+              </div>
             </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white ">
-                The stadium iron
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4">
-            <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel2}
-                alt="bright neon yellow padel balls on a vibrant blue court surface"
-              />
-            </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium concrete
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4">
-            <div className="aspect-[3/4] bg-surface-container-highest overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel3}
-                alt="dynamic full color photo of a padel player hitting a smash on court"
-              />
-            </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium glass
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4">
-            <div className="aspect-[3/4] bg-surface-container-highest overflow-hidden rounded-2xl mb-0">
-              <Image
-                className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
-                src={padel4}
-                alt="full color close-up of professional padel shoes with textured soles and bright details"
-              />
-            </div>
-            <div className="bg-surface-container py-3 rounded-b-2xl">
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors text-white">
-                The stadium grass
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -94,27 +84,11 @@ export default async function PadelPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7 ">
-            <div className="aspect-[3/4] bg-surface-container-highest rounded-[2.5rem] overflow-hidden cursor-pointer">
-              <Image
-                className="w-full h-full object-cover"
-                src={padel5}
-                alt="vibrant full color shot of a modern indoor padel arena with multiple blue courts"
-              />
-            </div>
-            <div className="aspect-[3/4] bg-surface-container-highest rounded-[2.5rem] overflow-hidden cursor-pointer">
-              <Image
-                className="w-full h-full object-cover"
-                src={padel6}
-                alt="colorful sports jerseys in navy and orange hanging in a professional locker room"
-              />
-            </div>
-            <div className="aspect-[3/4] bg-surface-container-highest rounded-[2.5rem] overflow-hidden cursor-pointer">
-              <Image
-                className="w-full h-full object-cover"
-                src={padel7}
-                alt="overhead view of bright blue padel courts surrounded by green landscaping"
-              />
-            </div>
+            {padelModel.map((item) => (
+              <div className="aspect-[3/4] bg-surface-container-highest rounded-[2.5rem] overflow-hidden cursor-pointer" key={item.title}>
+                <Image className="w-full h-full object-cover" src={item.image} alt={item.title} />
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -15,6 +15,7 @@ import { ArtificialGrass } from './collections/artificialGrass'
 import { Padpols } from './collections/Padpols'
 import { Gyms } from './collections/Gyms'
 import { KidsAreas } from './collections/kidsAreas'
+import { LandScaps } from './collections/landScaps'
 
 
 
@@ -30,7 +31,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Products, Portfolios, Acrylics, Trtans, Padels, ArtificialGrass, Padpols, KidsAreas, Gyms],
+  collections: [Users, Media, Products, Portfolios, Acrylics, Trtans, Padels, ArtificialGrass, Padpols, KidsAreas, Gyms, LandScaps],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

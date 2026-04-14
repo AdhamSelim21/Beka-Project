@@ -11,10 +11,52 @@ import landCover from 'images/landCover.png'
 import kidsCover from 'images/kidsCover.png'
 import gymCover from 'images/gymCover.png'
 
-
 export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
+  const sportsPlayGround = [
+    {
+      title: 'Acrylic',
+      image: acrylicCover,
+      href: '/acrylic',
+    },
+
+    {
+      title: 'Tartan',
+      image: trtanCover,
+      href: '/trtan',
+    },
+    {
+      title: 'Artificial-Grass',
+      image: artificialCover,
+      href: '/artificial-grass',
+    },
+    {
+      title: 'padel',
+      image: padelCover,
+      href: '/padel',
+    },
+    {
+      title: 'padpol',
+      image: padpolCover,
+      href: '/padpol',
+    },
+    {
+      title: 'Landscape',
+      image: landCover,
+      href: '/land-scape',
+    },
+    {
+      title: 'Kids-Area',
+      image: kidsCover,
+      href: '/kids-area',
+    },
+    {
+      title: 'Gym',
+      image: gymCover,
+      href: '/gym',
+    },
+  ]
 
   return (
     <div>
@@ -26,135 +68,26 @@ export default async function HomePage() {
           <div className="w-24 h-2 bg-orange-500 mx-auto mt-4 rounded-full"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Link
-            href="/acrylic"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Acrylic Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src= {acrylicCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">Acrylic</h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/trtan"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Tratan Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={trtanCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">Tratan</h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/artificial-grass"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Artificial Grass Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={artificialCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">
-                Artificial-Grass
-              </h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/padel"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Padel Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={padelCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">padel</h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/padpol"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Padpol Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={padpolCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">padpol</h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/land-scape"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Landscape Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={landCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">Landscape</h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/kids-area"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Kids Area Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={kidsCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">Kids-Area</h3>
-            </div>
-          </Link>
-
-          <Link
-            href="/gym"
-            className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-          >
-            <div className="aspect-[16/10] w-full overflow-hidden">
-              <Image
-                alt="Gym Cover"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={gymCover}
-              />
-            </div>
-            <div className="p-8 bg-blue-950">
-              <h3 className="font-headline font-black text-2xl text-white uppercase">Gym</h3>
-            </div>
-          </Link>
+          {sportsPlayGround.map((item) => (
+            <Link
+              href={item.href}
+              className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
+              key={item.title}
+            >
+              <div className="aspect-[16/10] w-full overflow-hidden" key={item.title}>
+                <Image
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  src={item.image}
+                />
+              </div>
+              <div className="p-8 bg-blue-950">
+                <h3 className="font-headline font-black text-2xl text-white uppercase">
+                  {item.title}
+                </h3>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </div>
