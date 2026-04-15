@@ -9,12 +9,14 @@ import tartan2 from 'images/tartan2.png'
 import tartan5 from 'images/tartan5.png'
 import tartan3 from 'images/tartan3.png'
 import tartan1 from 'images/tartan1.png'
+import { T } from 'node_modules/vitest/dist/chunks/traces.d.402V_yFI'
 
 export default async function TartanPage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const trtans = await payload.find({
     collection: 'trtans',
+    limit: 0,
   })
   const tartanBase = [
     {
@@ -69,7 +71,7 @@ export default async function TartanPage() {
               >
                 <div className="aspect-[16/9] bg-surface-variant overflow-hidden">
                   <Image
-                    className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all  rounded-lg  cursor-pointer"
                     src={item.image}
                     alt={item.name}
                   />
@@ -97,7 +99,7 @@ export default async function TartanPage() {
               >
                 <div className="aspect-square w-full bg-surface-container overflow-hidden ">
                   <Image
-                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
+                    className="w-full h-full object-cover rounded-lg  cursor-pointer "
                     src={item.image}
                     alt={item.name}
                   />
@@ -115,7 +117,7 @@ export default async function TartanPage() {
                 >
                   <div className="aspect-square w-full bg-surface-container overflow-hidden">
                     <Image
-                      className="w-full h-full object-cover rounded-lg group-hover:scale-105"
+                      className="w-full h-full object-cover rounded-lg  cursor-pointer"
                       src={item.image}
                       alt={item.title}
                     />
@@ -130,36 +132,39 @@ export default async function TartanPage() {
         </section>
 
         <section>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-blue-950 border-b-orange-500  border-b-6 inline-block pb-2">
-              PROJECTS
-            </h2>
-            <div className="w-12 h-1 bg-primary mx-auto"></div>
-          </div>
-          {trtans.docs && trtans.docs.length > 0 ? (
-            trtans.docs.map((trtan) => (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4" key={trtan.id}>
-                <div className="relative aspect-[3/4] bg-surface-variant overflow-hidden">
-                  <Image
-                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg group-hover:scale-105"
-                    src={
-                      (trtan.image as Media)?.url ||
-                      'https://via.placeholder.com/400x600?text=No+Image'
-                    }
-                    alt="vertical shot of a boutique blue tennis court at a luxury resort"
-                    fill
-                  />
-                </div>
-              </div>
-            ))
-          ) : (
-            /* --- Empty State Placeholder --- */
-            <div className="text-center py-20 border-2 border-dashed border-gray-300 rounded-xl">
-              <h3 className="text-2xl font-bold text-blue-950">No projects yet</h3>
-              <p className="text-gray-500 mt-2">Check back later for new arrivals.</p>
-            </div>
-          )}
-        </section>
+               <div className="text-center mb-16">
+                 <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-blue-950 border-b-orange-500  border-b-6 inline-block pb-2">
+                   PROJECTS
+                 </h2>
+                 <div className="w-12 h-1 bg-primary mx-auto"></div>
+               </div>
+               {trtans.docs && trtans.docs.length > 0 ? (
+                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                   {trtans.docs.map((trtan) => (
+                     <div
+                       className="relative aspect-[3/4] bg-surface-variant overflow-hidden"
+                       key={trtan.id}
+                     >
+                       <Image
+                         className="absolute inset-0 w-full h-full object-cover  rounded-lg  cursor-pointer"
+                         src={
+                           (trtan.image as Media)?.url ||
+                           'https://via.placeholder.com/400x600?text=No+Image'
+                         }
+                         alt="vertical shot of a boutique blue tennis court at a luxury resort"
+                         fill
+                       />
+                     </div>
+                   ))}
+                 </div>
+               ) : (
+                 /* --- Empty State Placeholder --- */
+                 <div className="text-center py-20 border-2 border-dashed border-gray-300 rounded-xl">
+                   <h3 className="text-2xl font-bold text-blue-950">No projects yet</h3>
+                   <p className="text-gray-500 mt-2">Check back later for new arrivals.</p>
+                 </div>
+               )}
+             </section>
       </main>
     </div>
   )

@@ -52,10 +52,13 @@ export default async function ArtificialGrassPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
             {system.map((item) => (
-              <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={item.title}>
+              <div
+                className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer"
+                key={item.title}
+              >
                 <div className="aspect-square w-full bg-surface-container overflow-hidden ">
                   <Image
-                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
+                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer "
                     src={item.image}
                     alt={item.title}
                   />
@@ -68,10 +71,13 @@ export default async function ArtificialGrassPage() {
 
             <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
               {lastSystem.map((item) => (
-                <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={item.title}>
+                <div
+                  className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer"
+                  key={item.title}
+                >
                   <div className="aspect-square w-full bg-surface-container overflow-hidden">
                     <Image
-                      className="w-full h-full object-cover rounded-lg group-hover:scale-105"
+                      className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                       src={item.image}
                       alt={item.title}
                     />
@@ -97,7 +103,7 @@ export default async function ArtificialGrassPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4" key={grass.id}>
                 <div className="relative aspect-[3/4] bg-surface-variant overflow-hidden">
                   <Image
-                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-lg cursor-pointer"
                     src={
                       (grass.image as Media)?.url ||
                       'https://via.placeholder.com/400x600?text=No+Image'

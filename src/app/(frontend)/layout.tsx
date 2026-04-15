@@ -8,8 +8,8 @@ import { MdEmail } from 'react-icons/md'
 import Navbar from './Navbar'
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description: 'Beka Sports Playgrounds - Premier sports facilities and training for athletes of all levels.',
+  title: 'Beka Sports Playgrounds',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

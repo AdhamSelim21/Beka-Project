@@ -54,10 +54,13 @@ export default async function PadpolPage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {padpolBase.map((item) => (
-            <div className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4 " key={item.title}>
+            <div
+              className="flex flex-col bg-blue-950 rounded-2xl overflow-hidden cursor-pointer space-y-4 "
+              key={item.title}
+            >
               <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
                 <Image
-                  className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all  rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                   src={item.image}
                   alt={item.title}
                 />
@@ -81,8 +84,15 @@ export default async function PadpolPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 px-20">
             {padpolModel.map((item) => (
-              <div className="aspect-[3/4] bg-surface-variant rounded-[2.5rem] overflow-hidden cursor-pointer" key={item.title}>
-                <Image className="w-full h-full object-cover" src={item.image} alt={item.title} />
+              <div
+                className="aspect-[3/4] bg-surface-variant rounded-[2.5rem] overflow-hidden cursor-pointer"
+                key={item.title}
+              >
+                <Image
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
+                  src={item.image}
+                  alt={item.title}
+                />
               </div>
             ))}
           </div>
@@ -100,7 +110,7 @@ export default async function PadpolPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6" key={padpol.id}>
               <div className="aspect-[16/9] bg-surface-container-highest rounded-[2.5rem] overflow-hidden cursor-pointer">
                 <Image
-                  className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all  rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                   src={
                     (padpol.image as Media).url ||
                     'https://via.placeholder.com/400x600?text=No+Image'

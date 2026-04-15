@@ -13,6 +13,7 @@ export default async function AcrylicPage() {
   const payload = await getPayload({ config: payloadConfig })
   const acrylics = await payload.find({
     collection: 'acrylics',
+    limit: 0,
   })
 
   const acrylicBase = [
@@ -52,10 +53,13 @@ export default async function AcrylicPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {acrylicBase.map((base) => (
-              <div className="space-y-4 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={base.title}>
+              <div
+                className="space-y-4 bg-blue-950 rounded-xl p-6 group cursor-pointer"
+                key={base.title}
+              >
                 <div className="aspect-[16/9] bg-surface-variant overflow-hidden">
                   <Image
-                    className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all  rounded-lg "
                     src={base.image}
                     alt={base.title}
                   />
@@ -77,10 +81,13 @@ export default async function AcrylicPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {system.map((layer) => (
-              <div className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer" key={layer.title}>
+              <div
+                className="flex flex-col items-center text-center space-y-6 bg-blue-950 rounded-xl p-6 group cursor-pointer"
+                key={layer.title}
+              >
                 <div className="aspect-square w-full bg-surface-container overflow-hidden ">
                   <Image
-                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 "
+                    className="w-full h-full object-cover rounded-lg  "
                     src={layer.image}
                     alt={layer.title}
                   />
@@ -101,11 +108,14 @@ export default async function AcrylicPage() {
             <div className="w-12 h-1 bg-primary mx-auto"></div>
           </div>
           {acrylics.docs && acrylics.docs.length > 0 ? (
-            acrylics.docs.map((acrylic) => (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4" key={acrylic.id}>
-                <div className="relative aspect-[3/4] bg-surface-variant overflow-hidden">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {acrylics.docs.map((acrylic) => (
+                <div
+                  className="relative aspect-[3/4] bg-surface-variant overflow-hidden"
+                  key={acrylic.id}
+                >
                   <Image
-                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover  rounded-lg  cursor-pointer"
                     src={
                       (acrylic.image as Media)?.url ||
                       'https://via.placeholder.com/400x600?text=No+Image'
@@ -114,8 +124,8 @@ export default async function AcrylicPage() {
                     fill
                   />
                 </div>
-              </div>
-            ))
+              ))}
+            </div>
           ) : (
             /* --- Empty State Placeholder --- */
             <div className="text-center py-20 border-2 border-dashed border-gray-300 rounded-xl">

@@ -29,7 +29,7 @@ export default async function ProuductsPage() {
               <div className="flex-1 w-full aspect-[16/9] bg-surface-container rounded-lg overflow-hidden editorial-shadow transition-transform duration-500 group-hover:scale-[1.02]">
                 <img
                   alt={product.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                   src={
                     (product.image as Media)?.url ||
                     'https://via.placeholder.com/800x450?text=No+Image+Available'

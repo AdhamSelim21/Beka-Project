@@ -67,7 +67,7 @@ export default async function LandScapePage() {
                 >
                   <div className="aspect-[3/4] bg-surface-variant overflow-hidden rounded-2xl mb-0">
                     <Image
-                      className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all  rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                       src={item.image}
                       alt={item.name}
                     />
@@ -98,7 +98,7 @@ export default async function LandScapePage() {
                 >
                   <div className="aspect-[16/9] bg-surface-variant overflow-hidden">
                     <Image
-                      className="w-full h-full object-cover transition-all duration-700 rounded-lg group-hover:scale-105"
+                      className="w-full h-full object-cover transition-all  rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                       src={item.image}
                       alt={item.name}
                     />
@@ -124,7 +124,7 @@ export default async function LandScapePage() {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4" key={landScape.id}>
                 <div className="relative aspect-[3/4] bg-surface-variant overflow-hidden">
                   <Image
-                    className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500 rounded-lg group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover  rounded-lg group-hover:scale-105 transition-transform duration-500 cursor-pointer"
                     src={
                       (landScape.image as Media)?.url ||
                       'https://via.placeholder.com/400x600?text=No+Image'
