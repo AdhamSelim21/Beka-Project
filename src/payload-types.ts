@@ -71,14 +71,7 @@ export interface Config {
     media: Media;
     products: Product;
     portfolios: Portfolio;
-    acrylics: Acrylic;
-    trtans: Trtan;
-    padels: Padel;
-    'artificial-grass': ArtificialGrass;
-    padpols: Padpol;
-    'kids-areas': KidsArea;
-    gyms: Gym;
-    'land-scaps': LandScap;
+    services: Service;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -90,14 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     products: ProductsSelect<false> | ProductsSelect<true>;
     portfolios: PortfoliosSelect<false> | PortfoliosSelect<true>;
-    acrylics: AcrylicsSelect<false> | AcrylicsSelect<true>;
-    trtans: TrtansSelect<false> | TrtansSelect<true>;
-    padels: PadelsSelect<false> | PadelsSelect<true>;
-    'artificial-grass': ArtificialGrassSelect<false> | ArtificialGrassSelect<true>;
-    padpols: PadpolsSelect<false> | PadpolsSelect<true>;
-    'kids-areas': KidsAreasSelect<false> | KidsAreasSelect<true>;
-    gyms: GymsSelect<false> | GymsSelect<true>;
-    'land-scaps': LandScapsSelect<false> | LandScapsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -169,6 +155,7 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
+  _key?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -205,81 +192,21 @@ export interface Portfolio {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "acrylics".
+ * via the `definition` "services".
  */
-export interface Acrylic {
+export interface Service {
   id: number;
+  title: string;
   image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "trtans".
- */
-export interface Trtan {
-  id: number;
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "padels".
- */
-export interface Padel {
-  id: number;
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "artificial-grass".
- */
-export interface ArtificialGrass {
-  id: number;
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "padpols".
- */
-export interface Padpol {
-  id: number;
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "kids-areas".
- */
-export interface KidsArea {
-  id: number;
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "gyms".
- */
-export interface Gym {
-  id: number;
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "land-scaps".
- */
-export interface LandScap {
-  id: number;
-  image?: (number | null) | Media;
+  sections: {
+    title: string;
+    gallery: {
+      image: number | Media;
+      id?: string | null;
+    }[];
+    hideImageText?: boolean | null;
+    id?: string | null;
+  }[];
   updatedAt: string;
   createdAt: string;
 }
@@ -324,36 +251,8 @@ export interface PayloadLockedDocument {
         value: number | Portfolio;
       } | null)
     | ({
-        relationTo: 'acrylics';
-        value: number | Acrylic;
-      } | null)
-    | ({
-        relationTo: 'trtans';
-        value: number | Trtan;
-      } | null)
-    | ({
-        relationTo: 'padels';
-        value: number | Padel;
-      } | null)
-    | ({
-        relationTo: 'artificial-grass';
-        value: number | ArtificialGrass;
-      } | null)
-    | ({
-        relationTo: 'padpols';
-        value: number | Padpol;
-      } | null)
-    | ({
-        relationTo: 'kids-areas';
-        value: number | KidsArea;
-      } | null)
-    | ({
-        relationTo: 'gyms';
-        value: number | Gym;
-      } | null)
-    | ({
-        relationTo: 'land-scaps';
-        value: number | LandScap;
+        relationTo: 'services';
+        value: number | Service;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -425,6 +324,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  _key?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -459,73 +359,24 @@ export interface PortfoliosSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "acrylics_select".
+ * via the `definition` "services_select".
  */
-export interface AcrylicsSelect<T extends boolean = true> {
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
   image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "trtans_select".
- */
-export interface TrtansSelect<T extends boolean = true> {
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "padels_select".
- */
-export interface PadelsSelect<T extends boolean = true> {
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "artificial-grass_select".
- */
-export interface ArtificialGrassSelect<T extends boolean = true> {
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "padpols_select".
- */
-export interface PadpolsSelect<T extends boolean = true> {
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "kids-areas_select".
- */
-export interface KidsAreasSelect<T extends boolean = true> {
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "gyms_select".
- */
-export interface GymsSelect<T extends boolean = true> {
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "land-scaps_select".
- */
-export interface LandScapsSelect<T extends boolean = true> {
-  image?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        gallery?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
+        hideImageText?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

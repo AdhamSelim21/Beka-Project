@@ -8,18 +8,10 @@ import { Media } from './collections/Media'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { Products } from './collections/Products'
 import { Portfolios } from './collections/Portfolios'
-import { Acrylics } from './collections/Acrylics'
-import { Trtans } from './collections/Trtans'
-import { Padels } from './collections/Padels'
-import { ArtificialGrass } from './collections/artificialGrass'
-import { Padpols } from './collections/Padpols'
-import { Gyms } from './collections/Gyms'
-import { KidsAreas } from './collections/kidsAreas'
-import { LandScaps } from './collections/landScaps'
+ import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
+import { Services } from './collections/Services'
 
 
-
-// import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -31,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Products, Portfolios, Acrylics, Trtans, Padels, ArtificialGrass, Padpols, KidsAreas, Gyms, LandScaps],
+collections: [Users, Media, Products, Portfolios, Services],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -44,15 +36,15 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    // uploadthingStorage({
-    //   collections: {
-    //     media: true,
-    //   },
-    //   options: {
-    //     token: process.env.UPLOADTHING_TOKEN,
-    //     acl: 'public-read',
-    //   },
-    // }),
+    uploadthingStorage({
+      collections: {
+        media: true,
+      },
+      options: {
+        token: process.env.UPLOADTHING_TOKEN,
+        acl: 'public-read',
+      },
+    }),
   ],
   cors: {
     origins: ['http://localhost:3000', '*'],

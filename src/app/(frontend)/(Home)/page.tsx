@@ -2,61 +2,18 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import Link from 'next/link'
 import Image from 'next/image'
-import acrylicCover from 'images/acrylicCover.png'
-import trtanCover from 'images/trtanCover.png'
-import artificialCover from 'images/artificialCover.png'
-import padelCover from 'images/padelCover.png'
-import padpolCover from 'images/padpolCover.png'
-import landCover from 'images/landCover.png'
-import kidsCover from 'images/kidsCover.png'
-import gymCover from 'images/gymCover.png'
+import { Media } from '@/payload-types'
 
 export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const sportsPlayGround = [
-    {
-      title: 'Acrylic',
-      image: acrylicCover,
-      href: '/acrylic',
-    },
+  const sportsPlayGround = await payload.find({
+    collection: 'services',
+    limit: 0,
+    sort: 'createdAt',
+  })
+  console.log(sportsPlayGround)
 
-    {
-      title: 'Tartan',
-      image: trtanCover,
-      href: '/trtan',
-    },
-    {
-      title: 'Artificial-Grass',
-      image: artificialCover,
-      href: '/artificial-grass',
-    },
-    {
-      title: 'padel',
-      image: padelCover,
-      href: '/padel',
-    },
-    {
-      title: 'padpol',
-      image: padpolCover,
-      href: '/padpol',
-    },
-    {
-      title: 'Landscape',
-      image: landCover,
-      href: '/land-scape',
-    },
-    {
-      title: 'Kids-Area',
-      image: kidsCover,
-      href: '/kids-area',
-    },
-    {
-      title: 'Gym',
-      image: gymCover,
-      href: '/gym',
-    },
-  ]
 
   return (
     <div>
@@ -68,9 +25,9 @@ export default async function HomePage() {
           <div className="w-24 h-2 bg-orange-500 mx-auto mt-4 rounded-full"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {sportsPlayGround.map((item) => (
+          {sportsPlayGround.docs.map((item) => (
             <Link
-              href={item.href}
+              href={`/${item.id}`}
               className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
               key={item.title}
             >
@@ -78,7 +35,9 @@ export default async function HomePage() {
                 <Image
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  src={item.image}
+                  src={(item.image as Media)?.url || ''}
+                  width={(item.image as Media)?.width || 1280}
+                  height={(item.image as Media)?.height || 1280}
                 />
               </div>
               <div className="p-8 bg-blue-950">
