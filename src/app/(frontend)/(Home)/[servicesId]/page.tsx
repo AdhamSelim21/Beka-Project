@@ -1,12 +1,12 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import GalleryComponent from './gallaryComponent' 
+import GalleryComponent from './gallaryComponent'
 
 export default async function ServicePage({ params }: { params: { servicesId: string } }) {
   const { servicesId } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  
+
   const service = await payload.find({
     collection: 'services',
     where: {
@@ -15,10 +15,10 @@ export default async function ServicePage({ params }: { params: { servicesId: st
       },
     },
   })
-  
-  const selectedService = service.docs[0] // Get the first service object, not the array
 
-  if (!selectedService) return <div>Service not found</div>
+  const selectedService = service.docs[0] // Get the first service object, not the array
+  console.log(selectedService) // Log the selected service to verify its structure
+ 
 
   return (
     <div>
@@ -33,7 +33,6 @@ export default async function ServicePage({ params }: { params: { servicesId: st
             </div>
 
             <GalleryComponent item={item} />
-            
           </section>
         ))}
       </main>
