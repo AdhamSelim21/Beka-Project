@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-headline: var(--font-headline);
+}
+
 * {
   box-sizing: border-box;
   

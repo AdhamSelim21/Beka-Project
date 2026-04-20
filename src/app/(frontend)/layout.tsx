@@ -6,6 +6,10 @@ import Hero from 'images/Hero.png'
 import { FaInstagram, FaFacebookF, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import Navbar from './Navbar'
+import { Geist, Oswald } from 'next/font/google'
+
+const geist = Geist({ subsets: ['latin'] })
+const oswald = Oswald({ subsets: ['latin'], variable: '--font-headline' })
 
 export const metadata = {
   description: 'Beka Sports Playgrounds - Premier sports facilities and training for athletes of all levels.',
@@ -16,7 +20,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${geist.className} ${oswald.variable}`}>
       <body>
         <Navbar />
 
@@ -29,7 +33,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <footer className="bg-blue-950 text-white py-12 md:py-16 px-6 md:px-8 border-t border-white/10 rounded-t-[2rem]">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
             <div className="flex flex-col items-center md:items-start gap-4">
-              <h2 className="font-headline font-black text-2xl tracking-tighter uppercase">
+              <h2 className="font-headline font-black text-2xl tracking-tighter uppercase ">
                 Beka <span className="text-blue-400">Sports</span>
               </h2>
               <p className="text-white/60 text-sm max-w-xs">

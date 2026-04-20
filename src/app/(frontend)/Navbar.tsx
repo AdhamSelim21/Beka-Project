@@ -11,7 +11,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About US', href: '/About-US' },
-    { name: 'Portfolio', href: '/Portfolio' },
+    { name: 'Company Projects', href: '/Portfolio' },
     { name: 'Products', href: '/Products' },
   ]
 
@@ -30,12 +30,12 @@ export default function Navbar() {
       </div>
 
       {/* 3. DESKTOP NAVIGATION */}
-      <div className="hidden md:flex items-center gap-3">
+      <div className="hidden md:flex items-center gap-3 ">
         {navLinks.map((link) => (
           <Link
             key={link.name}
             href={link.href}
-            className="px-5 py-2 rounded-full bg-blue-950 text-white text-xs font-bold uppercase tracking-widest hover:bg-blue-800 transition-all"
+            className="px-2 py-2 rounded-full bg-blue-950 text-white text-xs font-bold uppercase tracking-widest hover:bg-blue-800 transition-all"
           >
             {link.name}
           </Link>

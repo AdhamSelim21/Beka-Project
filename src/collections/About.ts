@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
-export const Portfolios: CollectionConfig = {
-  slug: 'portfolios',
+export const About: CollectionConfig = {
+  slug: 'about',
   admin: {
     useAsTitle: 'description',
   },
@@ -17,6 +17,7 @@ export const Portfolios: CollectionConfig = {
         name: 'image',
         type: 'upload',
         relationTo: 'media',
+        required: true,
     }
     
   ],
