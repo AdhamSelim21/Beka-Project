@@ -54,9 +54,9 @@ export default function GalleryComponent({ item }: { item: any }) {
                   className="flex-shrink-0 min-w-[90%] md:min-w-[50%] lg:min-w-[33.33%] pl-1 md:pl-2 lg:pl-4"
                 >
                   <div
-                    className={`space-y-1 md:space-y-2 lg:space-y-4 rounded-lg md:rounded-xl lg:rounded-3xl border border-white/10 bg-slate-950/50 p-2 md:p-3 lg:p-6 transition-transform duration-500 hover:-translate-y-1 ${item.hideImageText ? 'p-0' : ''}`}
+                    className={`space-y-0 md:space-y-2 lg:space-y-4 rounded-lg md:rounded-xl lg:rounded-3xl border-0 md:border md:border-white/10 bg-transparent md:bg-slate-950/50 p-0 md:p-3 lg:p-6 transition-transform duration-500 hover:-translate-y-1 ${item.hideImageText ? 'p-0' : ''}`}
                   >
-                    <div className="relative aspect-[16/9] md:aspect-[16/9] overflow-hidden rounded-md md:rounded-lg lg:rounded-3xl bg-slate-800">
+                    <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[16/9] overflow-hidden rounded-md md:rounded-lg lg:rounded-3xl bg-slate-800">
                       <Image
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src={url || 'https://via.placeholder.com/800x450'}
