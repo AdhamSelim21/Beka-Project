@@ -5,7 +5,7 @@ import { MdEmail } from 'react-icons/md'
 import Link from 'next/link'
 
 
-export default async function ProuductsPage() {
+export default async function Footer() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
  

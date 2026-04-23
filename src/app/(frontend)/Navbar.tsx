@@ -30,7 +30,7 @@ export default function Navbar() {
       </div>
 
       {/* 3. DESKTOP NAVIGATION */}
-      <div className="hidden md:flex items-center gap-3 ">
+      <div className="hidden lg:flex items-center gap-3 ">
         {navLinks.map((link) => (
           <Link
             key={link.name}
@@ -45,14 +45,14 @@ export default function Navbar() {
       {/* Hamburger Toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 text-blue-950 focus:outline-none"
+        className="lg:hidden p-2 text-blue-950 focus:outline-none"
       >
         {isOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
       </button>
 
       {/* MOBILE DROPDOWN MENU */}
       <div
-        className={`absolute top-20 left-0 w-full bg-blue-950 shadow-xl transition-all duration-300 ease-in-out overflow-hidden md:hidden ${
+        className={`absolute top-20 left-0 w-full bg-blue-950 shadow-xl transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${
           isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

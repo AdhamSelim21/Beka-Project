@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from 'react'
 export default function GalleryComponent({ item }: { item: any }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: 'start',
+    align: 'center',
     dragFree: true,
     containScroll: 'trimSnaps',
     breakpoints: {
@@ -46,24 +46,23 @@ export default function GalleryComponent({ item }: { item: any }) {
         <div className="embla overflow-hidden rounded-2xl md:rounded-3xl" ref={emblaRef}>
           <div className="flex -ml-1 md:-ml-2 lg:-ml-4">
             {gallery.map(({ image, id }: any, index: number) => {
-              const { url, alt, width, height } = image as Media
+              const { url, alt } = image as Media
               return (
                 <div
                   key={id}
-                  // Mobile: 90% (better fit), Tablet: 50% (2 slides), Desktop: 33.33% (3 slides)
-                  className="flex-shrink-0 min-w-[90%] md:min-w-[50%] lg:min-w-[33.33%] pl-1 md:pl-2 lg:pl-4"
+                  className="flex-shrink-0 min-w-[85%] md:min-w-[50%] lg:min-w-[33.33%] pl-4 md:pl-2 lg:pl-4"
                 >
                   <div
                     className={`space-y-0 md:space-y-2 lg:space-y-4 rounded-lg md:rounded-xl lg:rounded-3xl border-0 md:border md:border-white/10 bg-transparent md:bg-slate-950/50 p-0 md:p-3 lg:p-6 transition-transform duration-500 hover:-translate-y-1 ${item.hideImageText ? 'p-0' : ''}`}
                   >
-                    <div className="relative aspect-[4/3] md:aspect-[16/9] lg:aspect-[16/9] overflow-hidden rounded-md md:rounded-lg lg:rounded-3xl bg-slate-800">
+                    <div className="relative aspect-[16/9] overflow-hidden rounded-md md:rounded-lg lg:rounded-3xl bg-slate-800">
                       <Image
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         src={url || 'https://via.placeholder.com/800x450'}
                         alt={alt || ''}
-                        width={width || 800}
-                        height={height || 450}
-                        priority={index < 3} // Prioritize loading first few images
+                        fill
+                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                        className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                        priority={index < 3}
                       />
                     </div>
                     {!item.hideImageText && (
@@ -78,14 +77,12 @@ export default function GalleryComponent({ item }: { item: any }) {
           </div>
         </div>
 
-        {/* Status Indicator */}
         <div className="mt-3 md:mt-4 flex justify-center">
           <div className="rounded-full bg-slate-950/90 px-3 md:px-4 py-1 md:py-1.5 text-[10px] md:text-xs font-semibold uppercase tracking-widest text-slate-100 shadow-lg border border-white/5">
             {currentIndex} / {count}
           </div>
         </div>
 
-        {/* Buttons: Smaller on mobile, positioned for touch */}
         <button
           onClick={scrollPrev}
           className="absolute left-0.5 md:left-2 lg:left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-slate-800/80 p-1.5 md:p-2 lg:p-3 text-xs md:text-sm lg:text-base font-semibold text-white shadow-lg transition hover:bg-slate-700"
@@ -126,9 +123,8 @@ export default function GalleryComponent({ item }: { item: any }) {
   return (
     <div className={`${getGridStyles()} gap-4 md:gap-8`}>
       {gallery.map(({ image, id }: any, index: number) => {
-        const { url, alt, width, height } = image as Media
+        const { url, alt } = image as Media
 
-        // Width logic for the 5-item layout
         const itemWidthClass =
           count === 5
             ? index < 3
@@ -141,17 +137,17 @@ export default function GalleryComponent({ item }: { item: any }) {
             key={id}
             className={`${itemWidthClass} group rounded-2xl md:rounded-3xl border border-white/10 bg-blue-950 transition duration-300 hover:-translate-y-1 ${item.hideImageText ? 'p-0' : 'p-4 md:p-6'}`}
           >
-            <div className="aspect-[16/9] overflow-hidden rounded-xl md:rounded-3xl bg-slate-900">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xl md:rounded-3xl bg-slate-900">
               <Image
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 src={url || 'https://via.placeholder.com/800x450'}
                 alt={alt || ''}
-                width={width || 800}
-                height={height || 450}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
             {!item.hideImageText && (
-              <p className="mt-3 md:mt-4 text-sm md:text-lg font-semibold tracking-widest text-slate-100 text-center uppercase group-hover:text-orange-500 transition-colors">
+              <p className="mt-3 md:mt-4 text-sm md:text-lg font-semibold tracking-widest text-slate-100 text-center uppercase group-hover:text-orange-500   transition-colors">
                 {alt || 'Untitled Image'}
               </p>
             )}
