@@ -73,6 +73,7 @@ export interface Config {
     portfolios: Portfolio;
     services: Service;
     about: About;
+    footer: Footer;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     portfolios: PortfoliosSelect<false> | PortfoliosSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -226,6 +228,29 @@ export interface About {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  email: {
+    emailAddress: string;
+    id?: string | null;
+  }[];
+  whatsapp: {
+    number: string;
+    id?: string | null;
+  }[];
+  socialMedia: {
+    instagram: string;
+    facebook: string;
+    tiktok: string;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -271,6 +296,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'about';
         value: number | About;
+      } | null)
+    | ({
+        relationTo: 'footer';
+        value: number | Footer;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -406,6 +435,34 @@ export interface ServicesSelect<T extends boolean = true> {
 export interface AboutSelect<T extends boolean = true> {
   description?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  email?:
+    | T
+    | {
+        emailAddress?: T;
+        id?: T;
+      };
+  whatsapp?:
+    | T
+    | {
+        number?: T;
+        id?: T;
+      };
+  socialMedia?:
+    | T
+    | {
+        instagram?: T;
+        facebook?: T;
+        tiktok?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

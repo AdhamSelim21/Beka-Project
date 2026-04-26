@@ -11,6 +11,7 @@ import { Portfolios } from './collections/Portfolios'
  import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 import { Services } from './collections/Services'
 import { About } from './collections/About'
+import { Footer } from './collections/Footer'
 
 
 
@@ -24,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-collections: [Users, Media, Products, Portfolios, Services, About],
+collections: [Users, Media, Products, Portfolios, Services, About, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
