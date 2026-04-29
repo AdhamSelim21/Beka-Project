@@ -17,6 +17,7 @@ export default async function ServicePage({ params }: { params: { servicesId: st
   })
 
   const selectedService = service.docs[0] // Get the first service object, not the array
+  console.log('Selected Service:', selectedService) // Log the selected service to verify its structure
 
   return (
     <div>

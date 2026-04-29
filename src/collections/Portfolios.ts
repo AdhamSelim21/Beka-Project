@@ -5,19 +5,18 @@ export const Portfolios: CollectionConfig = {
   admin: {
     useAsTitle: 'description',
   },
-  
-  fields: [
 
+  fields: [
     {
-        name: 'description',
-        type: 'textarea',
-        required: true,
+      name: 'description',
+      type: 'textarea',
+      required: true,
     },
     {
-        name: 'image',
-        type: 'upload',
-        relationTo: 'media',
-    }
-    
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+    },
+ 
   ],
 }

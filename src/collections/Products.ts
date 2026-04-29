@@ -7,21 +7,20 @@ export const Products: CollectionConfig = {
   },
   fields: [
     {
-        name: 'title',
-        type: 'text',
-        required: true,
-    
+      name: 'title',
+      type: 'text',
+      required: true,
     },
     {
-        name: 'description',
-        type: 'textarea',
-        required: true,
+      name: 'description',
+      type: 'textarea',
+      required: true,
     },
     {
-        name: 'image',
-        type: 'upload',
-        relationTo: 'media',
-    }
-    
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+    },
+
   ],
 }

@@ -8,12 +8,10 @@ import { Media } from './collections/Media'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { Products } from './collections/Products'
 import { Portfolios } from './collections/Portfolios'
- import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
+import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 import { Services } from './collections/Services'
 import { About } from './collections/About'
 import { Footer } from './collections/Footer'
-
-
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +23,14 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-collections: [Users, Media, Products, Portfolios, Services, About, Footer],
+  collections: [Users, Media, Products, Portfolios, Services, About, Footer],
+  localization: {
+    locales: ['en-US', 'ar-EG', 'fr', 'tr'],
+    defaultLocale: 'en-US',
+  },
+  experimental: {
+    localizeStatus: true,
+  },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -50,5 +55,5 @@ collections: [Users, Media, Products, Portfolios, Services, About, Footer],
   ],
   cors: {
     origins: ['http://localhost:3000', '*'],
-  }
+  },
 })

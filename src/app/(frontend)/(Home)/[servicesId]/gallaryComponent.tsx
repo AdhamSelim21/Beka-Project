@@ -104,56 +104,57 @@ export default function GalleryComponent({ item }: { item: any }) {
 
   // 2. DYNAMIC GRID LOGIC (1-5 images)
   const getGridStyles = () => {
-    switch (count) {
-      case 1:
-        return 'grid grid-cols-1'
-      case 2:
-        return 'grid grid-cols-1 md:grid-cols-2'
-      case 3:
-        return 'grid grid-cols-1 md:grid-cols-3'
-      case 4:
-        return 'grid grid-cols-1 md:grid-cols-2'
-      case 5:
-        return 'flex flex-wrap justify-center'
-      default:
-        return 'grid grid-cols-1'
-    }
+  switch (count) {
+    case 1: return 'grid grid-cols-1'
+    case 2: return 'grid grid-cols-1 md:grid-cols-2'
+    case 3: return 'grid grid-cols-1 md:grid-cols-3'
+    case 4: return 'grid grid-cols-1 md:grid-cols-2'
+    case 5: return 'flex flex-wrap justify-center'
+    default: return 'grid grid-cols-1'
   }
+}
 
-  return (
-    <div className={`${getGridStyles()} gap-4 md:gap-8`}>
-      {gallery.map(({ image, id }: any, index: number) => {
-        const { url, alt } = image as Media
+return (
+  <div className={`${getGridStyles()} gap-4 md:gap-8`}>
+    {gallery.map(({ image, id }: any, index: number) => {
+      const { url, alt, width, height } = image as Media
 
-        const itemWidthClass =
-          count === 5
-            ? index < 3
-              ? 'w-full md:w-[calc(33.33%-1.5rem)]'
-              : 'w-full md:w-[calc(50%-1.5rem)]'
-            : 'w-full'
+      // 1. Determine Orientation Class
+      // If height is greater than width, it's portrait.
+      const isPortrait = height && width && height > width;
+      const aspectClass = isPortrait ? 'aspect-[3/4]' : 'aspect-[16/9]';
 
-        return (
-          <div
-            key={id}
-            className={`${itemWidthClass} group rounded-2xl md:rounded-3xl border border-white/10 bg-blue-950 transition duration-300 hover:-translate-y-1 ${item.hideImageText ? 'p-0' : 'p-4 md:p-6'}`}
-          >
-            <div className="relative aspect-[16/9] overflow-hidden rounded-xl md:rounded-3xl bg-slate-900">
-              <Image
-                src={url || 'https://via.placeholder.com/800x450'}
-                alt={alt || ''}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              />
-            </div>
-            {!item.hideImageText && (
-              <p className="mt-3 md:mt-4 text-sm md:text-lg font-semibold tracking-widest text-slate-100 text-center uppercase group-hover:text-orange-500   transition-colors">
-                {alt || 'Untitled Image'}
-              </p>
-            )}
+      const itemWidthClass =
+        count === 5
+          ? index < 3
+            ? 'w-full md:w-[calc(33.33%-1.5rem)]'
+            : 'w-full md:w-[calc(50%-1.5rem)]'
+          : 'w-full'
+
+      return (
+        <div
+          key={id}
+          className={`${itemWidthClass} group rounded-2xl md:rounded-3xl border border-white/10 bg-blue-950 transition duration-300 hover:-translate-y-1 ${item.hideImageText ? 'p-0' : 'p-4 md:p-6'}`}
+        >
+          {/* 2. Apply the dynamic aspectClass here */}
+          <div className={`relative ${aspectClass} overflow-hidden rounded-xl md:rounded-3xl bg-slate-900 `}>
+            <Image
+              src={url || 'https://via.placeholder.com/800x450'}
+              alt={alt || ''}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105 item-stretch"
+            />
           </div>
-        )
-      })}
-    </div>
-  )
+          
+          {!item.hideImageText && (
+            <p className="mt-3 md:mt-4 text-sm md:text-lg font-semibold tracking-widest text-slate-100 text-center uppercase group-hover:text-orange-500 transition-colors">
+              {alt || 'Untitled Image'}
+            </p>
+          )}
+        </div>
+      )
+    })}
+  </div>
+)
 }

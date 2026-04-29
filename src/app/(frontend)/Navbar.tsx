@@ -23,7 +23,7 @@ export default function Navbar() {
       </div>
 
       {/* 2. CENTER TITLE (Desktop Only) */}
-      <div className=" lg:block absolute left-1/2 -translate-x-1/2">
+      <div className="absolute left-1/2 -translate-x-1/2 ">
         <h1 className="font-headline tracking-tighter text-xl font-black uppercase text-blue-950">
           BEKA SPORTS
         </h1>
@@ -44,8 +44,11 @@ export default function Navbar() {
 
       {/* Hamburger Toggle */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden p-2 text-blue-950 focus:outline-none"
+        type="button"
+        onClick={() => {
+          setIsOpen(!isOpen)
+        }}
+        className=" relative z- lg:hidden  p-2 text-blue-950 focus:outline-none "
       >
         {isOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
       </button>

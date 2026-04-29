@@ -1,4 +1,5 @@
 import React from 'react'
+import type { Viewport } from 'next'
 import './styles.css'
 import Image from 'next/image'
 import Hero from 'images/Hero.png'
@@ -9,6 +10,11 @@ import { Geist, Oswald } from 'next/font/google'
 
 const geist = Geist({ subsets: ['latin'] })
 const oswald = Oswald({ subsets: ['latin'], variable: '--font-headline' })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
 
 export const metadata = {
   description:
