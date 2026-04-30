@@ -14,7 +14,6 @@ export const Products: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      required: true,
     },
     {
       name: 'image',

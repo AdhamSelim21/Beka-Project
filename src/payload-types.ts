@@ -184,7 +184,7 @@ export interface Media {
 export interface Product {
   id: number;
   title: string;
-  description: string;
+  description?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;

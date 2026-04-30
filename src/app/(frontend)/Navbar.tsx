@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/' },
     { name: 'About US', href: '/About-US' },
     { name: 'Company Projects', href: '/Portfolio' },
     { name: 'Products', href: '/Products' },
