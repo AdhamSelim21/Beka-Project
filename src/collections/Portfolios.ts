@@ -11,11 +11,13 @@ export const Portfolios: CollectionConfig = {
       name: 'description',
       type: 'textarea',
       required: true,
+      localized: true,
     },
     {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
+      localized: true,
     },
  
   ],

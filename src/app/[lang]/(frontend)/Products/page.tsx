@@ -11,7 +11,7 @@ export default async function ProuductsPage() {
     limit: 0,
     sort: 'createdAt',
   })
-  console.log('Fetched products:', products) // Debug log to check fetched data
+  
 
   return (
     <div>

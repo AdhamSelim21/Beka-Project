@@ -11,12 +11,14 @@ export const About: CollectionConfig = {
       name: 'description',
       type: 'textarea',
       required: true,
+      localized: true,
     },
     {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
       required: true,
+      localized: true,
     },
   ],
 }

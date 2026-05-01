@@ -4,25 +4,31 @@ import Image from 'next/image'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import Link from 'next/link'
 import Logo from 'images/Logo.png'
+import LanguageDropdown from './LanguageDropdown' // Import here
+import { Locale } from '@/types'
 
-export default function Navbar() {
+export default  function Navbar( {lang}: { lang: Locale }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Services', href: '/' },
-    { name: 'About US', href: '/About-US' },
-    { name: 'Company Projects', href: '/Portfolio' },
-    { name: 'Products', href: '/Products' },
+    { name: 'Services', href: `/${lang}` },
+    { name: 'About US', href: `/${lang}/About-US` },
+    { name: 'Company Projects', href: `/${lang}/Portfolio` },
+    { name: 'Products', href: `/${lang}/Products` },
   ]
 
   return (
     <nav className="fixed top-0 w-full z-[100] bg-white/95 backdrop-blur-md border-b border-gray-100 flex justify-between items-center px-6 md:px-12 h-20 shadow-sm">
-      {/* 1. LOGO */}
-      <div className="relative z-[110]">
+      {/* 1. LOGO & LANGUAGE (Left Side) */}
+      <div className="relative z-[110] flex items-center gap-4">
         <Image src={Logo} alt="Logo" width={60} height={60} className="md:w-[70px]" />
+        {/* Desktop Dropdown */}
+        <div className="hidden lg:block">
+          <LanguageDropdown />
+        </div>
       </div>
 
-      {/* 2. CENTER TITLE (Desktop Only) */}
+      {/* 2. CENTER TITLE */}
       <div className="absolute left-1/2 -translate-x-1/2 ">
         <h1 className="font-headline tracking-tighter text-xl font-black uppercase text-blue-950">
           BEKA SPORTS
@@ -45,10 +51,8 @@ export default function Navbar() {
       {/* Hamburger Toggle */}
       <button
         type="button"
-        onClick={() => {
-          setIsOpen(!isOpen)
-        }}
-        className=" relative z- lg:hidden  p-2 text-blue-950 focus:outline-none "
+        onClick={() => setIsOpen(!isOpen)}
+        className="relative z-[110] lg:hidden p-2 text-blue-950 focus:outline-none"
       >
         {isOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
       </button>
@@ -56,10 +60,15 @@ export default function Navbar() {
       {/* MOBILE DROPDOWN MENU */}
       <div
         className={`absolute top-20 left-0 w-full bg-blue-950 shadow-xl transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${
-          isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="flex flex-col items-center py-8 gap-6">
+          {/* Mobile Dropdown Integration */}
+          <div className="pb-4 border-b border-white/10 w-full flex justify-center">
+            <LanguageDropdown />
+          </div>
+
           {navLinks.map((link, index) => (
             <Link
               key={link.name}

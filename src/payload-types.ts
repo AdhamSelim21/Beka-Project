@@ -100,11 +100,11 @@ export interface Config {
     | ('false' | 'none' | 'null')
     | false
     | null
-    | ('en-US' | 'ar-EG' | 'fr' | 'tr')
-    | ('en-US' | 'ar-EG' | 'fr' | 'tr')[];
+    | ('en' | 'ar' | 'fr' | 'tr')
+    | ('en' | 'ar' | 'fr' | 'tr')[];
   globals: {};
   globalsSelect: {};
-  locale: 'en-US' | 'ar-EG' | 'fr' | 'tr';
+  locale: 'en' | 'ar' | 'fr' | 'tr';
   widgets: {
     collections: CollectionsWidget;
   };

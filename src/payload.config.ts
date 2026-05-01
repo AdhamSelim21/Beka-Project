@@ -12,6 +12,7 @@ import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
 import { Services } from './collections/Services'
 import { About } from './collections/About'
 import { Footer } from './collections/Footer'
+import { DEFAULT_LOCALE, LANGUAGES } from './constants'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,8 +26,9 @@ export default buildConfig({
   },
   collections: [Users, Media, Products, Portfolios, Services, About, Footer],
   localization: {
-    locales: ['en-US', 'ar-EG', 'fr', 'tr'],
-    defaultLocale: 'en-US',
+    locales: LANGUAGES,
+    defaultLocale: DEFAULT_LOCALE,
+    fallback: true,
   },
   experimental: {
     localizeStatus: true,

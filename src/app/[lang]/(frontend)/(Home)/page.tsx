@@ -3,17 +3,18 @@ import config from '@/payload.config'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Media } from '@/payload-types'
+import { Locale } from '@/types'
 
-export default async function HomePage() {
+export default async function HomePage({ params }: { params: { lang: Locale } }) {
+  const { lang } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const sportsPlayGround = await payload.find({
     collection: 'services',
     limit: 0,
     sort: 'createdAt',
+    locale: lang , // Ensure we fetch the correct locale
   })
-  console.log(sportsPlayGround)
-
 
   return (
     <div>
@@ -27,7 +28,7 @@ export default async function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sportsPlayGround.docs.map((item) => (
             <Link
-              href={`/${item.id}`}
+              href={`/${lang}/${item.id}`}
               className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
               key={item.title}
             >

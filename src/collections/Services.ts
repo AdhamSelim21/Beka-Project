@@ -1,59 +1,57 @@
-import type { CollectionConfig } from 'payload'
+import { localizeStatus, type CollectionConfig } from 'payload'
 
 export const Services: CollectionConfig = {
   slug: 'services',
   admin: {
     useAsTitle: '',
   },
-  
+
   fields: [
     {
-        name: 'title',
-        type: 'text',
-        required: true,
+      name: 'title',
+      type: 'text',
+      required: true,
+      localized: true,
     },
     {
-        name: 'image',
-        type: 'upload',
-        relationTo: 'media',
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
     },
     {
-        name: 'sections',
-        type: 'array',
-        required: true,
-        minRows: 2,
-        maxRows: 3,
-        fields: [
+      name: 'sections',
+      type: 'array',
+      required: true,
+      minRows: 2,
+      maxRows: 3,
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+          localized: true,
+        },
+        {
+          name: 'gallery',
+          type: 'array',
+          minRows: 2,
+          required: true,
+          fields: [
             {
-                name: 'title',
-                type: 'text',
-                required: true,
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
             },
-            {
-                name: 'gallery',
-                type: 'array',
-                minRows:2,
-                required: true,
-                fields: [
-                    {
-                        name: 'image',
-                        type: 'upload',
-                        relationTo: 'media',
-                        required: true,
-                    }
-                ]
-            },
-            {
-                name: 'hideImageText',
-                type: 'checkbox',
-                defaultValue: false,
-
-            }
-        ]
-    }
-
-    
-    
+          ],
+        },
+        {
+          name: 'hideImageText',
+          type: 'checkbox',
+          defaultValue: false,
+        },
+      ],
+    },
     
   ],
 }

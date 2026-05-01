@@ -1,9 +1,14 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import GalleryComponent from './gallaryComponent'
+import { Locale } from '@/types'
 
-export default async function ServicePage({ params }: { params: { servicesId: string } }) {
-  const { servicesId } = await params
+export default async function ServicePage({
+  params,
+}: {
+  params: { servicesId: string; lang: Locale }
+}) {
+  const { servicesId, lang } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
 
@@ -14,10 +19,10 @@ export default async function ServicePage({ params }: { params: { servicesId: st
         equals: servicesId,
       },
     },
+    locale: lang , // Ensure we fetch the correct locale
   })
 
   const selectedService = service.docs[0] // Get the first service object, not the array
-  console.log('Selected Service:', selectedService) // Log the selected service to verify its structure
 
   return (
     <div>

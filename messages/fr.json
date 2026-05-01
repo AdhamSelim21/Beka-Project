@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "services": "Services",
+    "aboutUs": "À Propos",
+    "portfolio": "Projets de l'Entreprise",
+    "products": "Produits",
+    "language": "Langue"
+  },
+  "home": {
+    "title": "Bienvenue à Beka Sports",
+    "description": "Des installations sportives de premier plan et une formation pour les athlètes de tous niveaux"
+  },
+  "aboutUs": {
+    "title": "À Propos",
+    "description": "En savoir plus sur Beka Sports"
+  },
+  "portfolio": {
+    "title": "Nos Projets",
+    "description": "Explorez les projets et réalisations de notre entreprise"
+  },
+  "products": {
+    "title": "Nos Produits",
+    "description": "Découvrez nos produits et services sportifs"
+  },
+  "footer": {
+    "copyright": "© 2026 Beka Sports. Tous droits réservés.",
+    "contact": "Nous Contacter",
+    "followUs": "Suivez-Nous"
+  }
+}
