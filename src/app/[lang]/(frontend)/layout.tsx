@@ -22,14 +22,24 @@ export const metadata = {
   title: 'Beka Sports Playgrounds',
 }
 
-export default async function RootLayout(props: { children: React.ReactNode; params: { lang: Locale } }) {
-  const { children , params } = props
+export default async function RootLayout(props: {
+  children: React.ReactNode
+  params: { lang: Locale }
+}) {
+  const { children, params } = props
   const { lang } = await params
+  const messages = await import(`../../../../messages/${lang}.json`)
+    .then((m) => m.default)
+    .catch(() => import(`../../../../messages/en.json`).then((m) => m.default))
 
   return (
-    <html   lang="en" className={`${geist.className} ${oswald.variable}`}>
+    <html
+      lang={lang}
+      dir={lang === 'ar' ? 'rtl' : 'ltr'}
+      className={`${geist.className} ${oswald.variable}`}
+    >
       <body>
-        <Navbar lang={lang} />
+        <Navbar lang={lang} dict={messages.nav} />
 
         <header className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] overflow-hidden mt-20 md:mt-20 lg:mt-20   ">
           <Image src={Hero} alt="Beka Sports Hero" fill />
@@ -37,7 +47,7 @@ export default async function RootLayout(props: { children: React.ReactNode; par
 
         <main>{children}</main>
 
-        <Footer />
+        <Footer lang={lang} />
       </body>
     </html>
   )

@@ -21,7 +21,6 @@ export const Products: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
-      localized: true,
     },
 
   ],

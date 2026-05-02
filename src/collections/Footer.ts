@@ -28,6 +28,7 @@ export const Footer: CollectionConfig = {
           name: 'number',
           type: 'text',
           required: true,
+          localized:true
         },
       ],
     },

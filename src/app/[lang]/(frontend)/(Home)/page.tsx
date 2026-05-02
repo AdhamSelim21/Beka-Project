@@ -13,7 +13,7 @@ export default async function HomePage({ params }: { params: { lang: Locale } })
     collection: 'services',
     limit: 0,
     sort: 'createdAt',
-    locale: lang , // Ensure we fetch the correct locale
+    locale: lang, // Ensure we fetch the correct locale
   })
 
   return (

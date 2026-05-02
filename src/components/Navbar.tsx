@@ -7,14 +7,14 @@ import Logo from 'images/Logo.png'
 import LanguageDropdown from './LanguageDropdown' // Import here
 import { Locale } from '@/types'
 
-export default  function Navbar( {lang}: { lang: Locale }) {
+export default function Navbar({ lang, dict }: { lang: Locale; dict: any }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Services', href: `/${lang}` },
-    { name: 'About US', href: `/${lang}/About-US` },
-    { name: 'Company Projects', href: `/${lang}/Portfolio` },
-    { name: 'Products', href: `/${lang}/Products` },
+    { name: dict?.services || 'Services', href: `/${lang}` },
+    { name: dict?.aboutUs || 'About US', href: `/${lang}/About-US` },
+    { name: dict?.portfolio || 'Company Projects', href: `/${lang}/Portfolio` },
+    { name: dict?.products || 'Products', href: `/${lang}/Products` },
   ]
 
   return (

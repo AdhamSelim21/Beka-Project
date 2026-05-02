@@ -4,23 +4,28 @@ import { FaInstagram, FaFacebookF, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import Link from 'next/link'
 import { unstable_cache } from 'next/cache'
+import { Locale } from '@/types'
 
 // Use unstable_cache to memoize the database query
 const getCachedFooter = unstable_cache(
-  async () => {
+  async (lang: Locale) => {
     const payloadConfig = await config
     const payload = await getPayload({ config: payloadConfig })
     return await payload.find({
       collection: 'footer',
       limit: 0,
+      locale: lang,
     })
   },
   ['footer-data-key'],
-  { revalidate: 3600, tags: ['footer'] } // Cache for 1 hour
+  { revalidate: 3600, tags: ['footer'] }, // Cache for 1 hour
 )
 
-export default async function Footer() {
-  const footer = await getCachedFooter()
+export default async function Footer({ lang }: { lang: Locale }) {
+  const footer = await getCachedFooter(lang)
+  const messages = await import(`../../messages/${lang}.json`)
+    .then((m) => m.default)
+    .catch(() => import(`../../messages/en.json`).then((m) => m.default))
 
   return (
     <footer className="bg-blue-950 text-white py-12 md:py-16 px-6 md:px-8 border-t border-white/10 rounded-t-[2rem]">
@@ -35,7 +40,7 @@ export default async function Footer() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h3 className="font-bold uppercase tracking-widest text-blue-400 text-xs">Contact Us</h3>
+          <h3 className="font-bold uppercase tracking-widest text-blue-400 text-xs">{messages.footer.contact}</h3>
           <div className="flex flex-col gap-3 text-sm text-white/80">
             {footer.docs.map((item) => (
               <div key={item.id} className="flex flex-col gap-2">
@@ -49,7 +54,7 @@ export default async function Footer() {
                     <span className="break-all">{emailEntry.emailAddress}</span>
                   </Link>
                 ))}
-                
+
                 {item.whatsapp.map((whatsappEntry: any, index: number) => (
                   <Link
                     key={index}
@@ -68,19 +73,31 @@ export default async function Footer() {
         </div>
 
         <div className="flex flex-col items-center md:items-start gap-4">
-          <h3 className="font-bold uppercase tracking-widest text-blue-400 text-xs">Follow Us</h3>
+          <h3 className="font-bold uppercase tracking-widest text-blue-400 text-xs">{messages.footer.followUs}</h3>
           <div className="flex items-center gap-4">
             {footer.docs.map((item) => (
               <div key={item.id} className="flex items-center gap-4">
                 {item.socialMedia.map((social: any, index: number) => (
                   <div key={index} className="flex items-center gap-4">
-                    <Link href={social.instagram} target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-red-500 transition-all">
+                    <Link
+                      href={social.instagram}
+                      target="_blank"
+                      className="p-3 bg-white/5 rounded-full hover:bg-red-500 transition-all"
+                    >
                       <FaInstagram size={20} />
                     </Link>
-                    <Link href={social.facebook} target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-800 transition-all">
+                    <Link
+                      href={social.facebook}
+                      target="_blank"
+                      className="p-3 bg-white/5 rounded-full hover:bg-blue-800 transition-all"
+                    >
                       <FaFacebookF size={20} />
                     </Link>
-                    <Link href={social.tiktok} target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-black transition-all">
+                    <Link
+                      href={social.tiktok}
+                      target="_blank"
+                      className="p-3 bg-white/5 rounded-full hover:bg-black transition-all"
+                    >
                       <FaTiktok size={20} />
                     </Link>
                   </div>
@@ -92,7 +109,7 @@ export default async function Footer() {
       </div>
       <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 text-center">
         <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-white/30">
-          © 2026 Beka Sports Playgrounds. All Rights Reserved.
+          {messages.footer.copyright}
         </p>
       </div>
     </footer>

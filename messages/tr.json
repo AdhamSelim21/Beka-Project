@@ -4,23 +4,20 @@
     "aboutUs": "Hakkımızda",
     "portfolio": "Şirket Projeleri",
     "products": "Ürünler",
-    "language": "Dil"
+    "language": "Dil",
+    "BekaSports": "Beka Spor"
   },
   "home": {
-    "title": "Beka Sports'a Hoş Geldiniz",
-    "description": "Her seviyedeki sporcular için en iyi spor tesisleri ve antrenman"
+    "title": "Beka Sports'a Hoş Geldiniz"
   },
   "aboutUs": {
-    "title": "Hakkımızda",
-    "description": "Beka Sports hakkında daha fazla bilgi edinin"
+    "title": "Hakkımızda"
   },
   "portfolio": {
-    "title": "Projelerimiz",
-    "description": "Şirket projelerimizi ve başarılarımızı keşfedin"
+    "title": "Projelerimiz"
   },
   "products": {
-    "title": "Ürünlerimiz",
-    "description": "Spor ürün ve hizmetlerimizi keşfedin"
+    "title": "Ürünlerimiz"
   },
   "footer": {
     "copyright": "© 2026 Beka Sports. Tüm hakları saklıdır.",

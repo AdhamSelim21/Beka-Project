@@ -195,7 +195,16 @@ export interface Product {
  */
 export interface Portfolio {
   id: number;
-  description: string;
+  Projectname: {
+    title: string;
+    listItems?:
+      | {
+          content?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -405,7 +414,18 @@ export interface ProductsSelect<T extends boolean = true> {
  * via the `definition` "portfolios_select".
  */
 export interface PortfoliosSelect<T extends boolean = true> {
-  description?: T;
+  Projectname?:
+    | T
+    | {
+        title?: T;
+        listItems?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   image?: T;
   updatedAt?: T;
   createdAt?: T;

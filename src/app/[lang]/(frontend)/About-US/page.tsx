@@ -2,13 +2,16 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import Image from 'next/image'
 import { Media } from '@/payload-types'
+import { Locale } from '@/types'
 
-export default async function AboutUSPage() {
+export default async function AboutUSPage({ params }: { params: { lang: Locale } }) {
+  const { lang } = await params
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const about = await payload.find({
     collection: 'about',
     limit: 0,
+    locale: lang,
   })
 
   return (
@@ -22,8 +25,11 @@ export default async function AboutUSPage() {
             <div className="flex flex-col gap-6 md:gap-8">
               {about.docs && about.docs.length > 0 ? (
                 about.docs.map((item) => (
-                  <p className="text-slate-600 leading-relaxed text-lg border-l-4 border-orange-500 pl-6" key={item.id}>
-                    {item.description}
+                  <p
+                    className="text-slate-600 leading-relaxed text-lg border-l-4 border-orange-500 pl-6"
+                    key={item.id}
+                  >
+                    {`/${lang}/${item.description}`}
                   </p>
                 ))
               ) : (
