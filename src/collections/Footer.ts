@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload'
 export const Footer: CollectionConfig = {
   slug: 'footer',
   admin: {
-    useAsTitle: '',
+    useAsTitle:''
   },
 
   fields: [
@@ -28,32 +28,31 @@ export const Footer: CollectionConfig = {
           name: 'number',
           type: 'text',
           required: true,
-          localized:true
+          localized: true,
         },
       ],
     },
     {
-        name: 'socialMedia',
-        type: 'array',
-        required: true,
-        fields: [
-            {
-                name: 'instagram',
-                type: 'text',
-                required: true,
-            },
-            {
-                name: 'facebook',
-                type: 'text',
-                required: true,
-            },
-            {
-                name: 'tiktok',
-                type: 'text',
-                required: true,
-            }
-        ]
-    }
-
+      name: 'socialMedia',
+      type: 'array',
+      required: true,
+      fields: [
+        {
+          name: 'instagram',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'facebook',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'tiktok',
+          type: 'text',
+          required: true,
+        },
+      ],
+    },
   ],
 }

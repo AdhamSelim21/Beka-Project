@@ -5,7 +5,7 @@
     "portfolio": "Şirket Projeleri",
     "products": "Ürünler",
     "language": "Dil",
-    "BekaSports": "Beka Spor"
+    "BrandName": "BekaSpor"
   },
   "home": {
     "title": "Beka Sports'a Hoş Geldiniz"
@@ -20,8 +20,11 @@
     "title": "Ürünlerimiz"
   },
   "footer": {
-    "copyright": "© 2026 Beka Sports. Tüm hakları saklıdır.",
+    "copyright": "© 2026 Beka Spor. Tüm hakları saklıdır.",
     "contact": "Bize Ulaşın",
-    "followUs": "Bizi Takip Edin"
+    "followUs": "Bizi Takip Edin",
+    "brandName": "BEKA",
+    "brandSuffix": "SPOR",
+    "description": "Her sporcu için son teknoloji tesisler ve profesyonel eğitim."
   }
 }

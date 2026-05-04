@@ -5,7 +5,7 @@
     "portfolio": "مشاريع الشركة",
     "products": "المنتجات",
     "language": "اللغة",
-    "BekaSports": "بيكا سبورت"
+    "BrandName": "بيكا سبورت"
   },
   "home": {
     "title": "مرحباً بك في بيكا سبورتس"
@@ -22,6 +22,9 @@
   "footer": {
     "copyright": "© 2026 بيكا سبورتس. جميع الحقوق محفوظة.",
     "contact": "اتصل بنا",
-    "followUs": "تابعنا"
+    "followUs": "تابعنا",
+    "brandName": "بيكا",
+    "brandSuffix": "سبورت",
+    "description": "مرافق حديثة وتدريب احترافي لكل رياضي"
   }
 }

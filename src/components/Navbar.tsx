@@ -31,7 +31,7 @@ export default function Navbar({ lang, dict }: { lang: Locale; dict: any }) {
       {/* 2. CENTER TITLE */}
       <div className="absolute left-1/2 -translate-x-1/2 ">
         <h1 className="font-headline tracking-tighter text-xl font-black uppercase text-blue-950">
-          BEKA SPORTS
+          {dict?.BrandName || 'BEKASPORT'} 
         </h1>
       </div>
 

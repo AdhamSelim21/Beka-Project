@@ -5,7 +5,7 @@
     "portfolio": "Company Projects",
     "products": "Products",
     "language": "Language",
-    "BekaSports": "Beka Sports"
+    "BrandName": "BekaSports"
   },
   "home": {
     "title": "Welcome to Beka Sports"
@@ -22,6 +22,9 @@
   "footer": {
     "copyright": "© 2026 Beka Sports. All rights reserved.",
     "contact": "Contact Us",
-    "followUs": "Follow Us"
+    "followUs": "Follow Us",
+    "brandName": "BEKA",
+    "brandSuffix": "SPORTS",
+    "description": "State-of-the-art facilities and professional training for every athlete."
   }
 }
