@@ -29,7 +29,7 @@ export default async function AboutUSPage({ params }: { params: { lang: Locale }
                     className="text-slate-600 leading-relaxed text-lg border-l-4 border-orange-500 pl-6"
                     key={item.id}
                   >
-                    {`/${lang}/${item.description}`}
+                    {item.description}
                   </p>
                 ))
               ) : (

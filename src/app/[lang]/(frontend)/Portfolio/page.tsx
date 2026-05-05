@@ -33,7 +33,7 @@ export default async function PortfolioPage({ params }: { params: { lang: Locale
                         key={index}
                         className="text-slate-600 leading-relaxed text-lg border-l-4 border-orange-500 pl-6 list-none"
                       >
-                        {point.content}
+                       {point.content}
                       </li>
                     ))}
                   </ul>
@@ -47,7 +47,7 @@ export default async function PortfolioPage({ params }: { params: { lang: Locale
           </div>
 
           <div className="relative h-[400px] md:h-full md:min-h-[600px] w-full">
-            <div className="w-full h-full bg-secondary rounded-2xl flex items-center justify-center relative overflow-hidden ">
+            <div className="w-full h-full bg-secondary rounded-2xl flex items-center justify-center relative overflow-hidden bg-blue-950 ">
               {portfolio.docs && portfolio.docs.length > 0
                 ? portfolio.docs.map((item) => (
                     <Image
