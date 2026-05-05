@@ -28,7 +28,7 @@ export default async function ProductsPage({ params }: { params: { lang: Locale 
                 <h2 className="font-headline font-extrabold text-4xl tracking-tighter text-on-surface text-white uppercase border-b-orange-500 border-b-6 inline-block pb-2">
                   {product.title}
                 </h2>
-                <p className="text-on-surface-variant text-lg leading-relaxed max-w-md border-l-4 border-orange-500 pl-6 text-white">
+                <p className="text-on-surface-variant text-lg leading-relaxed max-w-md border-s-4 border-orange-500 ps-6 text-white">
                   {product.description}
                 </p>
               </div>

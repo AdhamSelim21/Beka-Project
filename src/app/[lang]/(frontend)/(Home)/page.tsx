@@ -4,35 +4,45 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Media } from '@/payload-types'
 import { Locale } from '@/types'
+import { getDictionary } from '@/messages/Dictionary'
 
-export default async function HomePage({ params }: { params: { lang: Locale } }) {
+export default async function HomePage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params
+
+  // Parallel fetch: Payload data + Static JSON dictionary
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
-  const sportsPlayGround = await payload.find({
-    collection: 'services',
-    limit: 0,
-    sort: 'createdAt',
-    locale: lang, // Ensure we fetch the correct locale
-  })
+
+  const [sportsPlayGround, dict] = await Promise.all([
+    payload.find({
+      collection: 'services',
+      limit: 0,
+      sort: 'createdAt',
+      locale: lang,
+    }),
+    getDictionary(lang),
+  ])
+
+  const messages = dict.home
 
   return (
     <div>
       <section className="max-w-7xl mx-auto py-24 px-8">
         <div className="mb-16 text-center">
           <h2 className="font-headline font-black text-4xl md:text-5xl text-blue-950 uppercase tracking-tight">
-            Sports Playgrounds
+            {messages.title}
           </h2>
           <div className="w-24 h-2 bg-orange-500 mx-auto mt-4 rounded-full"></div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sportsPlayGround.docs.map((item) => (
             <Link
               href={`/${lang}/${item.id}`}
               className="group cursor-pointer bg-white border border-outline rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300"
-              key={item.title}
+              key={item.id}
             >
-              <div className="aspect-[16/10] w-full overflow-hidden" key={item.title}>
+              <div className="aspect-[16/10] w-full overflow-hidden">
                 <Image
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

@@ -29,7 +29,7 @@ export default function Navbar({ lang, dict }: { lang: Locale; dict: any }) {
       </div>
 
       {/* 2. CENTER TITLE */}
-      <div className="absolute left-1/2 -translate-x-1/2 ">
+      <div className="absolute start-1/2 -translate-x-1/2 ">
         <h1 className="font-headline tracking-tighter text-xl font-black uppercase text-blue-950">
           {dict?.BrandName || 'BEKASPORT'} 
         </h1>
@@ -59,7 +59,7 @@ export default function Navbar({ lang, dict }: { lang: Locale; dict: any }) {
 
       {/* MOBILE DROPDOWN MENU */}
       <div
-        className={`absolute top-20 left-0 w-full bg-blue-950 shadow-xl transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${
+        className={`absolute top-20 start-0 w-full bg-blue-950 shadow-xl transition-all duration-300 ease-in-out overflow-hidden lg:hidden ${
           isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

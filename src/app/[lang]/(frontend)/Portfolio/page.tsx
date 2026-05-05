@@ -31,7 +31,7 @@ export default async function PortfolioPage({ params }: { params: { lang: Locale
                     {item.listItems?.map((point, index) => (
                       <li
                         key={index}
-                        className="text-slate-600 leading-relaxed text-lg border-l-4 border-orange-500 pl-6 list-none"
+                        className="text-slate-600 leading-relaxed text-lg border-s-4 border-orange-500 ps-6 list-none"
                       >
                        {point.content}
                       </li>
@@ -40,7 +40,7 @@ export default async function PortfolioPage({ params }: { params: { lang: Locale
                 </div>
               ))
             ) : (
-              <p className="text-slate-600 leading-relaxed text-lg border-l-4 border-orange-500 pl-6">
+              <p className="text-slate-600 leading-relaxed text-lg border-s-4 border-orange-500 ps-6">
                 No Content Found.
               </p>
             )}

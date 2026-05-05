@@ -8,16 +8,13 @@
     "BrandName": "BekaSports"
   },
   "home": {
-    "title": "Welcome to Beka Sports"
+    "title": "Sports Playgrounds"
   },
   "aboutUs": {
-    "title": "About Us"
+    "title": "About-Us :- "
   },
   "portfolio": {
     "title": "Our Projects"
-  },
-  "products": {
-    "title": "Our Products"
   },
   "footer": {
     "copyright": "© 2026 Beka Sports. All rights reserved.",

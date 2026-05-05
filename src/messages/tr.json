@@ -8,16 +8,13 @@
     "BrandName": "BekaSpor"
   },
   "home": {
-    "title": "Beka Sports'a Hoş Geldiniz"
+    "title": "Spor Sahaları"
   },
   "aboutUs": {
-    "title": "Hakkımızda"
+    "title": "Hakkımızda:- "
   },
   "portfolio": {
     "title": "Projelerimiz"
-  },
-  "products": {
-    "title": "Ürünlerimiz"
   },
   "footer": {
     "copyright": "© 2026 Beka Spor. Tüm hakları saklıdır.",
