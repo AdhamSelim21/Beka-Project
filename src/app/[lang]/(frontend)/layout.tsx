@@ -9,18 +9,16 @@ import { Geist, Oswald, IBM_Plex_Sans_Arabic } from 'next/font/google'
 import { Locale } from '@/types'
 import { getDictionary } from '@/messages/Dictionary'
 
-// LTR Fonts
-const geist = Geist({ 
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-geist' 
+  variable: '--font-geist',
 })
 
-const oswald = Oswald({ 
-  subsets: ['latin'], 
-  variable: '--font-headline' 
+const oswald = Oswald({
+  subsets: ['latin'],
+  variable: '--font-headline',
 })
 
-// RTL Font (Arabic)
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
   weight: ['300', '400', '500', '700'],
@@ -47,7 +45,6 @@ export default async function RootLayout(props: {
 
   const dict = await getDictionary(lang)
 
-  // Determine which font class to apply as the primary text font
   const isRtl = lang === 'ar'
   const primaryFont = isRtl ? ibmPlexArabic.className : geist.className
 
@@ -55,8 +52,6 @@ export default async function RootLayout(props: {
     <html
       lang={lang}
       dir={isRtl ? 'rtl' : 'ltr'}
-      // We inject all variables so they are available in CSS, 
-      // but set the 'primaryFont' as the main class
       className={`${primaryFont} ${oswald.variable} ${ibmPlexArabic.variable} ${geist.variable} antialiased`}
     >
       <body>
