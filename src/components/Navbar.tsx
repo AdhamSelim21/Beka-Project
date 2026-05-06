@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import Link from 'next/link'
 import Logo from 'images/Logo.png'
-import LanguageDropdown from './LanguageDropdown' // Import here
+import LanguageDropdown from './LanguageDropdown'
 import { Locale } from '@/types'
 
 export default function Navbar({ lang, dict }: { lang: Locale; dict: any }) {
@@ -29,9 +29,9 @@ export default function Navbar({ lang, dict }: { lang: Locale; dict: any }) {
       </div>
 
       {/* 2. CENTER TITLE */}
-      <div className="absolute start-1/2 -translate-x-1/2 ">
-        <h1 className="font-headline tracking-tighter text-xl font-black uppercase text-blue-950">
-          {dict?.BrandName || 'BEKASPORT'} 
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+        <h1 className="font-headline tracking-tighter text-xl font-black uppercase text-blue-950 text-center">
+          {dict?.BrandName || 'BEKASPORT'}
         </h1>
       </div>
 

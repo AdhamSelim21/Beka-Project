@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { Locale } from '@/types'
 import { getDictionary } from '@/messages/Dictionary'
-import FooterClient from '@/components/FooterClient' // Import the new client component
+import FooterClient from '@/components/FooterClient'
 
 const getFooterData = async (lang: Locale) => {
   const payloadConfig = await config
