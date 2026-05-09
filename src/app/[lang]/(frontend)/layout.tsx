@@ -57,7 +57,7 @@ export default async function RootLayout(props: {
       <body>
         <Navbar lang={lang} dict={dict.nav} />
 
-        <header className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] overflow-hidden mt-20">
+        <header className="relative w-full h-[40vh] md:h-[60vh] lg:h-[70vh] overflow-hidden mt-15">
           <Image src={Hero} alt="Beka Sports Hero" fill priority />
         </header>
 

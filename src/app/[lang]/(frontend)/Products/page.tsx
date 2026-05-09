@@ -32,7 +32,7 @@ export default async function ProductsPage({ params }: { params: { lang: Locale 
                   {product.description}
                 </p>
               </div>
-              <div className="flex-1 w-full aspect-[16/9] bg-surface-container rounded-lg overflow-hidden editorial-shadow transition-transform duration-500 group-hover:scale-[1.02]">
+              <div className="flex-1 bg-white rounded-xl w-full aspect-[16/9] overflow-hidden editorial-shadow transition-transform duration-500 group-hover:scale-[1.02]">
                 <Image
                   alt={product.title}
                   width={1600}
