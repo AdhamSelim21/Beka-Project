@@ -1,67 +1,76 @@
-# Payload Blank Template
+# Beka-Project
 
-This template comes configured with the bare minimum to get started on anything you need.
+A robust web application built with **Next.js** and **Payload CMS**.
 
-## Quick start
+## Overview
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+Beka-Project is a modern, full-stack application leveraging the power of Next.js for the frontend and Payload CMS for headless content management. It features multi-language support (i18n) and a customizable admin panel.
 
-## Quick Start - local setup
+## Features
 
-To spin up this template locally, follow these steps:
+- 🌍 **Internationalization (i18n)**: Full multi-language support (English, Arabic, etc.) with RTL layout handling.
+- 🚀 **Next.js 15+**: High-performance frontend using the App Router and Server Components.
+- 🛠️ **Payload CMS 3.0**: Powerful headless CMS with a custom, type-safe admin panel.
+- 💾 **PostgreSQL**: Reliable and scalable database management.
+- 🎨 **Premium UI**: Modern, responsive design built with Tailwind CSS and sleek animations.
 
-### Clone
+## Getting Started
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+### Prerequisites
 
-### Development
+- Node.js (v18+)
+- pnpm (recommended) or npm/yarn
+- PostgreSQL (local or cloud)
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+### Installation
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/AdhamSelim21/Beka-Project.git
+   cd Beka-Project
+   ```
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+2. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
 
-#### Docker (Optional)
+3. **Environment Setup**:
+   Create a `.env` file in the root directory and add the necessary environment variables based on `.env.example`. Make sure to set up your `DATABASE_URI` and `PAYLOAD_SECRET`.
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+### Running locally
 
-To do so, follow these steps:
+Start the development server:
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+```bash
+pnpm dev
+```
 
-## How it works
+Open `http://localhost:3000` to view the application.
+You can access the Payload admin panel to manage content.
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+## Available Scripts
 
-### Collections
+- `pnpm dev`: Starts the development server for both Next.js and Payload.
+- `pnpm build`: Builds the application for production.
+- `pnpm start`: Starts the production server.
+- `pnpm generate:types`: Generates TypeScript types based on your Payload collections.
+- `pnpm payload generate:importmap`: Regenerates the admin panel import map.
+- `pnpm lint`: Runs ESLint to check for code quality issues.
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+## Project Structure
 
-- #### Users (Authentication)
+- `src/app/(frontend)`: Next.js App Router routes for the main website.
+- `src/app/(payload)`: Payload CMS admin panel configuration and routes.
+- `src/collections`: Definitions for Payload database collections.
+- `src/globals`: Definitions for Payload global settings (e.g., Header, Footer).
+- `src/components`: Reusable React components for the frontend.
+- `src/hooks`: Custom Payload hooks for business logic.
 
-  Users are auth-enabled collections that have access to the admin panel.
+## Technologies Used
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+- [Next.js](https://nextjs.org/)
+- [Payload CMS](https://payloadcms.com/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
